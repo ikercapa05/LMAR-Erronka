@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arte Modernoko Museoa</title>
+    <link rel="stylesheet" href="Sarrerak.css">
+	<script>
+function calcularTotal() {
+    let cantidad = parseInt(document.getElementById("cantidad").value);
+    let precioBase = 10;
+    let total = cantidad * precioBase;
+
+    // Extra por visita guiada
+    if (document.getElementById("visitaGuiada").checked) {
+        total += cantidad * 5;
+    }
+
+    // Códigos de descuento válidos
+    const codigos = {
+        "MUSEO10": 10,   // 10% descuento
+        "CULTURA20": 20  // 20%
+    };
+
+    let codigoIngresado = document.getElementById("descuento").value.toUpperCase();
+
+    if (codigos[codigoIngresado]) {
+        let descuento = codigos[codigoIngresado];
+        total = total - (total * (descuento / 100));
+    }
+
+    document.getElementById("total").innerText = "Total: " + total.toFixed(2) + "€";
+}
+
+</script>
+</head>
+<body>
+ <header class="kabezera">
+            <h1>Arte Modernoko Museoa</h1>
+        </div>
+        <nav class="nabegadorea">
+            <ul>
+                <a href="Hasiera.html" class="Hasiera">Hasiera</a>
+                <a href="Koadroak.html" class="Koadroa">Koadroa</a>
+                <a href="Sarrerak.html" class="Sarrerak">Sarrerak</a>
+            </ul>
+        </nav>
+    </header>
+    <body>
+       <div class="sarrera">
+        <form>
+            <label for="fname">Izena:</label><br>
+            <input type="text" id="fname" name="fname" required><br>
+            <label for="lname">Abizena:</label><br>
+            <input type="text" id="lname" name="lname" required>
+            <br>
+            <br>
+            <label for="email">mail-a:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <br>
+            <label for="birthday">Data:</label>
+            <input type="date" id="birthday" name="birthday" required>
+            <br>
+            <br>
+            <label for="ordua">Aukeratu ordua:</label>
+                <select id="ordua" name="ordua">
+                    <option value="5">17:00</option>
+                    <option value="6">18:00</option>
+                    <option value="7">19:00</option>
+                    <option value="8">20:00</option>
+                </select>
+                <br>
+                <br>
+                <label for="Sarrera">Sarrera mota:</label>
+                <select id="Sarrera" name="Sarrera">
+                    <option value="1">Adingabea</option>
+                    <option value="2">Helduak</option>
+                    <option value="3">Zaharrak</option>
+                </select>
+                <br>
+                <br>
+            <input type="checkbox" id="bisita" name="bisita" value="bisitagida">
+            <label for="bisita"> Bisita gidatua Extra (+5€)</label> <br>
+            <br>
+                <label for="Kopurua">Kopurua:</label>
+                <input type="number" id="Kopurua" name="Kopurua" min="1" step="1" required><br><br>
+                <label for="coupon">deskontu kodea:</label>
+                <input type="text" id="deskontua" name="deskontua" placeholder="deskontu kodea sartu"><br> <br>
+                <input type="submit" value="Sarreraren prezioa">
+        </form>
+      </div>
+		<footer> 
+		<p class="footer">© 2025 Arte Modernoko Museoa <p>
+		</footer>
+</body>
+</html>
